@@ -1,4 +1,4 @@
-package dev.lucasmendes.pageSession.config;
+package dev.lucasmendes.pagesession.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

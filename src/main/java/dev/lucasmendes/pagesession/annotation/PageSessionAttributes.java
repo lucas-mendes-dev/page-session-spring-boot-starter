@@ -1,4 +1,4 @@
-package dev.lucasmendes.pageSession.annotation;
+package dev.lucasmendes.pagesession.annotation;
 
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.web.bind.annotation.SessionAttributes;

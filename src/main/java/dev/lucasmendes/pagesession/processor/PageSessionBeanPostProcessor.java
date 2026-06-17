@@ -1,7 +1,8 @@
-package dev.lucasmendes.pageSession.processor;
+package dev.lucasmendes.pagesession.processor;
 
-import dev.lucasmendes.pageSession.store.PageSessionAttributeStore;
+import dev.lucasmendes.pagesession.store.PageSessionAttributeStore;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
@@ -16,16 +17,16 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
  */
 public class PageSessionBeanPostProcessor implements BeanPostProcessor {
 
-    private final PageSessionAttributeStore store;
+    private final ObjectProvider<PageSessionAttributeStore> storeProvider;
 
-    public PageSessionBeanPostProcessor(final PageSessionAttributeStore store) {
-        this.store = store;
+    public PageSessionBeanPostProcessor(final ObjectProvider<PageSessionAttributeStore> storeProvider) {
+        this.storeProvider = storeProvider;
     }
 
     @Override
     public Object postProcessAfterInitialization(@NonNull Object bean, @NonNull String beanName) throws BeansException {
         if(bean instanceof final RequestMappingHandlerAdapter adapter) {
-            adapter.setSessionAttributeStore(store);
+            adapter.setSessionAttributeStore(storeProvider.getIfAvailable());
         }
         return bean;
     }

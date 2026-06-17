@@ -1,8 +1,9 @@
-package dev.lucasmendes.pageSession.config;
+package dev.lucasmendes.pagesession.config;
 
-import dev.lucasmendes.pageSession.interceptor.PageSessionHandlerInterceptor;
-import dev.lucasmendes.pageSession.processor.PageSessionBeanPostProcessor;
-import dev.lucasmendes.pageSession.store.PageSessionAttributeStore;
+import dev.lucasmendes.pagesession.interceptor.PageSessionHandlerInterceptor;
+import dev.lucasmendes.pagesession.processor.PageSessionBeanPostProcessor;
+import dev.lucasmendes.pagesession.store.PageSessionAttributeStore;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -23,7 +24,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
  * your own bean — the {@link ConditionalOnMissingBean} will ensure that the
  * starter does not replace yours.
  */
-@AutoConfiguration
+@AutoConfiguration(after = org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @ConditionalOnClass({ RequestMappingHandlerAdapter.class, WebMvcConfigurer.class })
 @EnableConfigurationProperties(PageSessionProperties.class)
@@ -46,8 +47,9 @@ public class PageSessionAutoConfiguration implements WebMvcConfigurer {
      * a requirement of Spring for every {@link org.springframework.beans.factory.config.BeanPostProcessor}.
      */
     @Bean
-    public static PageSessionBeanPostProcessor pageSessionBeanPostProcessor(final PageSessionAttributeStore store) {
-        return new PageSessionBeanPostProcessor(store);
+    public static PageSessionBeanPostProcessor pageSessionBeanPostProcessor(
+            final ObjectProvider<PageSessionAttributeStore> storeProvider) {
+        return new PageSessionBeanPostProcessor(storeProvider);
     }
 
     @Override

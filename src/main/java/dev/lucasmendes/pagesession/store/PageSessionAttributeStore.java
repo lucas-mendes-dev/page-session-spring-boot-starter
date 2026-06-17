@@ -1,7 +1,7 @@
-package dev.lucasmendes.pageSession.store;
+package dev.lucasmendes.pagesession.store;
 
-import dev.lucasmendes.pageSession.annotation.PageSessionAttributes;
-import dev.lucasmendes.pageSession.config.PageSessionProperties;
+import dev.lucasmendes.pagesession.annotation.PageSessionAttributes;
+import dev.lucasmendes.pagesession.config.PageSessionProperties;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.support.SessionAttributeStore;

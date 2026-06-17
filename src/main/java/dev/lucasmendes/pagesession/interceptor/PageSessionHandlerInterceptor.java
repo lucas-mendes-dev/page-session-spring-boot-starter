@@ -1,6 +1,6 @@
-package dev.lucasmendes.pageSession.interceptor;
+package dev.lucasmendes.pagesession.interceptor;
 
-import dev.lucasmendes.pageSession.store.PageSessionAttributeStore;
+import dev.lucasmendes.pagesession.store.PageSessionAttributeStore;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.lang.NonNull;
