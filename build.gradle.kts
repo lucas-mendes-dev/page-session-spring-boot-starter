@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "dev.lucasmendes"
-version = "1.0.0"
+version = "0.0.1"
 description = "Isolamento de @SessionAttributes por controller sem conflitos de nome"
 
 java {
