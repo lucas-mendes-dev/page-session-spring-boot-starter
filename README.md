@@ -47,7 +47,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.lucas-mendes-dev:page-session-spring-boot-starter:0.0.1")
+    implementation("dev.lucasmendes:page-session-spring-boot-starter:0.0.1")
 }
 ```
 
